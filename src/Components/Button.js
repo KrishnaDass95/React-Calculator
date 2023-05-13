@@ -3,6 +3,11 @@ import React from "react";
 
 const Button = ({ buttonType, n1, n2, answer, message }) => {
 
+
+    const isNumber = (value) => {
+        return /^-?\d*(\.\d+)?$/.test(value);
+    }
+
     function calculate(n1, n2, buttonType){
         if(buttonType == '+'){
             answer(n1+n2);
@@ -12,7 +17,13 @@ const Button = ({ buttonType, n1, n2, answer, message }) => {
     function validate(){
         // check if n1 and n2 are integers
         if(n1 && n2){
-            
+            if(isNumber(n1) && isNumber(n2)){
+                n1 = Number(n1);
+                n2 = Number(n2);
+                calculate(n1, n2, buttonType);
+            }
+
+
         }
         else{
             message("field is empty, enter value")
