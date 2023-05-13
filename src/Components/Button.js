@@ -9,8 +9,14 @@ const Button = ({ buttonType, n1, n2, answer, message }) => {
     }
 
     function calculate(n1, n2, buttonType){
-        if(buttonType == '+'){
-            answer(n1+n2);
+        switch(buttonType){
+            case '+' : answer(n1+n2);
+            break;
+            case '-' : answer(n1-n2);
+            break;
+            case '*' : answer(n1*n2);
+            break;
+            case '/' : answer(n1/n2);
         }
     }
 
@@ -21,6 +27,7 @@ const Button = ({ buttonType, n1, n2, answer, message }) => {
                 n1 = Number(n1);
                 n2 = Number(n2);
                 calculate(n1, n2, buttonType);
+                message("success! your result is shown above")
             }
 
 
