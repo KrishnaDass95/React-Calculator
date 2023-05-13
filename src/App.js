@@ -8,6 +8,7 @@ const App = () => {
   const [num2, setNum2] = useState("");
   const [ans, setAns] = useState("");
   const [msg, setMsg] = useState("");
+  const [color, setColor] = useState(null);
 
   return (
     <div className="app-container">
@@ -24,30 +25,35 @@ const App = () => {
           n2={num2}
           answer={setAns}
           message={setMsg}
+          errorColor={setColor}
+
         />
         <Button buttonType="-" 
         n1={num1}
         n2={num2}
         answer={setAns}
         message={setMsg}
+        errorColor={setColor}
         />
         <Button buttonType="*" 
         n1={num1}
         n2={num2}
         answer={setAns}
         message={setMsg}
+        errorColor={setColor}
         />
         <Button buttonType="/" 
         n1={num1}
         n2={num2}
         answer={setAns}
         message={setMsg}
+        errorColor={setColor}
         />
       </div>
 
       <div className="results">
         <p>Result: {ans}</p>
-        <p>Message: {msg}</p>
+        <p className={color === null ? "white" : (color ? "green" : "red")}>Message: {msg}</p>
       </div>
     </div>
   );

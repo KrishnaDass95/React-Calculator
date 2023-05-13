@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ buttonType, n1, n2, answer, message }) => {
+const Button = ({ buttonType, n1, n2, answer, message, errorColor }) => {
   const isNumber = (value) => {
     return /^-?\d*(\.\d+)?$/.test(value);
   };
@@ -29,13 +29,16 @@ const Button = ({ buttonType, n1, n2, answer, message }) => {
         n2 = Number(n2);
         calculate(n1, n2, buttonType);
         message("success! your result is shown above");
+        errorColor(true);
       } else {
         message(
           "ERROR -> Please enter an integer or decimal, text not allowed"
         );
+        errorColor(false);
       }
     } else {
       message("ERROR -> field is empty, enter value");
+      errorColor(false);
       answer("");
     }
   }
