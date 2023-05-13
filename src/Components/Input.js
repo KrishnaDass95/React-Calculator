@@ -1,10 +1,13 @@
 
-const Input = (props) => {
+const Input = ({num, placeholder}) => {
 
     return (
         <input
         type="text"
-        placeholder={props.placeholder}
+        placeholder={placeholder}
+        onChange={(e) => {
+            num(e.target.value);
+        }} // setNum = num
          />
 
     )
